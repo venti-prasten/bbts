@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Best Cipher Machine</title>
+    <title>🚀 Dynamic Rotor Cipher Machine</title>
     <style>
         * {
             margin: 0;
@@ -386,7 +386,7 @@
 
         async function dynamicOffset(i, auxKey, seed) {
             const baseOffset = rotorCharOffset(auxKey[i % auxKey.length]);
-            const seedInput = ${seed}:${i};
+            const seedInput = `${seed}:${i}`;
             const hashDigest = await sha256(seedInput);
             const prngValue = parseInt(hashDigest.slice(0, 2), 16) % ROTOR_CHARS.length;
             return (baseOffset + prngValue) % LETTERS.length;
@@ -417,7 +417,7 @@
             document.querySelectorAll('.mode-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            document.querySelector(.mode-btn.${mode}).classList.add('active');
+            document.querySelector(`.mode-btn.${mode}`).classList.add('active');
             
             // Update labels and button text
             const textLabel = document.getElementById('textLabel');
