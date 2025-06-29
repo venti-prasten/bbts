@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Best Cipher Machine</title>
+    <title>🚀 Dynamic Rotor Cipher Machine</title>
     <style>
         * {
             margin: 0;
@@ -12,75 +12,44 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #ffffff;
-            color: #000000;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
-            line-height: 1.6;
         }
 
         .machine-container {
-            background: #ffffff;
-            border: 2px solid #000000;
-            border-radius: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
             padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             max-width: 800px;
             width: 100%;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
         }
 
         .header {
             text-align: center;
             margin-bottom: 40px;
-            border-bottom: 2px solid #000000;
-            padding-bottom: 20px;
         }
 
         .header h1 {
             font-size: 2.5em;
-            color: #000000;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 10px;
-            font-weight: 700;
-            letter-spacing: -1px;
         }
 
         .header p {
-            color: #666666;
+            color: #666;
             font-size: 1.1em;
             line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .language-selector {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .lang-btn {
-            padding: 8px 16px;
-            border: 1px solid #000000;
-            background: #ffffff;
-            color: #000000;
-            cursor: pointer;
-            font-size: 0.9em;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-
-        .lang-btn:hover {
-            background: #000000;
-            color: #ffffff;
-        }
-
-        .lang-btn.active {
-            background: #000000;
-            color: #ffffff;
         }
 
         .mode-selector {
@@ -92,25 +61,34 @@
 
         .mode-btn {
             padding: 15px 30px;
-            border: 2px solid #000000;
-            background: #ffffff;
-            color: #000000;
+            border: none;
+            border-radius: 50px;
             font-size: 1.1em;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
+        .mode-btn.encrypt {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+        }
+
+        .mode-btn.decrypt {
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            color: white;
+        }
+
         .mode-btn:hover {
-            background: #000000;
-            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         .mode-btn.active {
-            background: #000000;
-            color: #ffffff;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         .input-section {
@@ -125,25 +103,25 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: #000000;
+            color: #333;
             font-size: 1.1em;
         }
 
         .input-group input, .input-group textarea {
             width: 100%;
             padding: 15px;
-            border: 2px solid #000000;
-            border-radius: 0;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
             font-size: 1em;
-            transition: all 0.2s ease;
-            background: #ffffff;
-            color: #000000;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
         }
 
         .input-group input:focus, .input-group textarea:focus {
             outline: none;
-            border-color: #666666;
-            background: #f9f9f9;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            background: white;
         }
 
         .input-group textarea {
@@ -161,36 +139,44 @@
         .process-btn {
             width: 100%;
             padding: 20px;
-            border: 2px solid #000000;
-            border-radius: 0;
+            border: none;
+            border-radius: 15px;
             font-size: 1.3em;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 20px;
-            background: #ffffff;
-            color: #000000;
+        }
+
+        .process-btn.encrypt-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+        }
+
+        .process-btn.decrypt-btn {
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            color: white;
         }
 
         .process-btn:hover {
-            background: #000000;
-            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
 
         .process-btn:disabled {
-            opacity: 0.5;
+            opacity: 0.6;
             cursor: not-allowed;
-            background: #f0f0f0;
-            color: #999999;
+            transform: none;
         }
 
         .result-section {
             margin-top: 30px;
             padding: 20px;
-            background: #f9f9f9;
-            border: 2px solid #000000;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 15px;
+            border: 2px dashed #ccc;
             min-height: 100px;
             display: flex;
             align-items: center;
@@ -206,44 +192,44 @@
             font-family: 'Courier New', monospace;
             font-size: 1.2em;
             line-height: 1.6;
-            color: #000000;
+            color: #333;
             word-break: break-all;
             padding: 10px;
-            background: #ffffff;
-            border: 1px solid #000000;
-            margin: 10px 0;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
         }
 
         .result-label {
             font-weight: 600;
             margin-bottom: 10px;
             font-size: 1.1em;
-            color: #000000;
         }
 
         .copy-btn {
             margin-top: 10px;
             padding: 10px 20px;
-            background: #ffffff;
-            color: #000000;
-            border: 1px solid #000000;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
         }
 
         .copy-btn:hover {
-            background: #000000;
-            color: #ffffff;
+            background: #5a6fd8;
+            transform: translateY(-1px);
         }
 
         .placeholder {
-            color: #999999;
+            color: #999;
             font-style: italic;
         }
 
         .error {
-            color: #cc0000;
+            color: #e74c3c;
             font-weight: 600;
             margin-top: 10px;
         }
@@ -259,12 +245,12 @@
         .rotor {
             width: 50px;
             height: 50px;
-            border: 2px solid #000000;
-            background: #ffffff;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #000000;
+            color: white;
             font-weight: bold;
             font-size: 1.2em;
             animation: rotate 2s linear infinite;
@@ -276,37 +262,21 @@
         }
 
         .info-panel {
-            background: #f9f9f9;
-            border: 2px solid #000000;
+            background: rgba(102, 126, 234, 0.1);
+            border-left: 4px solid #667eea;
             padding: 15px;
             margin: 20px 0;
+            border-radius: 5px;
         }
 
         .info-panel h3 {
-            color: #000000;
+            color: #667eea;
             margin-bottom: 10px;
-            font-weight: 600;
         }
 
         .info-panel p {
-            color: #333333;
+            color: #666;
             line-height: 1.5;
-        }
-
-        .generate-btn {
-            margin-top: 10px;
-            padding: 8px 16px;
-            background: #ffffff;
-            color: #000000;
-            border: 1px solid #000000;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.2s ease;
-        }
-
-        .generate-btn:hover {
-            background: #000000;
-            color: #ffffff;
         }
 
         @media (max-width: 600px) {
@@ -327,38 +297,27 @@
                 width: 100%;
                 max-width: 200px;
             }
-
-            .language-selector {
-                flex-wrap: wrap;
-            }
         }
     </style>
 </head>
 <body>
     <div class="machine-container">
         <div class="header">
-            <h1 id="main-title">The Best Cipher Machine</h1>
-            <p id="main-description">Seed-driven encryption inspired by historical machines like Enigma, featuring dynamic rotor shifts and hash-based randomization.</p>
-            
-            <div class="language-selector">
-                <button class="lang-btn active" onclick="changeLanguage('en')">English</button>
-                <button class="lang-btn" onclick="changeLanguage('ko')">한국어</button>
-                <button class="lang-btn" onclick="changeLanguage('zh')">中文</button>
-                <button class="lang-btn" onclick="changeLanguage('sv')">Svenska</button>
-            </div>
+            <h1>🚀 Dynamic Rotor Cipher Machine</h1>
+            <p>Seed-driven encryption inspired by historical machines like Enigma, featuring dynamic rotor shifts and hash-based randomization.</p>
         </div>
 
         <div class="info-panel">
-            <h3 id="how-it-works">How it works:</h3>
-            <p id="how-it-works-desc">This cipher uses a 32-character rotor key (only 'a' to 'd') combined with a random seed to create dynamic encryption. Each character is shifted by an offset calculated from both the rotor position and a hash-based pseudo-random value derived from the seed.</p>
+            <h3>🔧 How it works:</h3>
+            <p>This cipher uses a 32-character rotor key (only 'a' to 'd') combined with a random seed to create dynamic encryption. Each character is shifted by an offset calculated from both the rotor position and a hash-based pseudo-random value derived from the seed.</p>
         </div>
 
         <div class="mode-selector">
             <button class="mode-btn encrypt active" onclick="setMode('encrypt')">
-                <span id="encrypt-text">Encrypt</span>
+                🔐 Encrypt
             </button>
             <button class="mode-btn decrypt" onclick="setMode('decrypt')">
-                <span id="decrypt-text">Decrypt</span>
+                🔓 Decrypt
             </button>
         </div>
 
@@ -369,22 +328,19 @@
             </div>
 
             <div class="input-group">
-                <label for="rotorKey" id="rotor-key-label">Rotor Key (32 characters, only 'a' to 'd'):</label>
+                <label for="rotorKey">Rotor Key (32 characters, only 'a' to 'd'):</label>
                 <input type="text" id="rotorKey" class="rotor-key-input" maxlength="32" placeholder="abcdabcdabcdabcdabcdabcdabcdabcd">
-                <button type="button" class="generate-btn" onclick="generateRotorKey()">
-                    <span id="generate-text">Generate Random Key</span>
-                </button>
             </div>
 
             <div class="input-group">
-                <label for="seed" id="seed-label">Random Seed (any string):</label>
+                <label for="seed">Random Seed (any string):</label>
                 <input type="text" id="seed" placeholder="Enter your secret seed">
             </div>
 
             <div class="rotor-visualization" id="rotorViz"></div>
 
-            <button class="process-btn" id="processBtn" onclick="processText()">
-                <span id="process-text">Encrypt Message</span>
+            <button class="process-btn encrypt-btn" id="processBtn" onclick="processText()">
+                🔐 Encrypt Message
             </button>
             
             <div id="error" class="error"></div>
@@ -395,139 +351,18 @@
                 <div id="resultLabel" class="result-label placeholder">Your result will appear here</div>
                 <div id="resultText" class="result-text" style="display: none;"></div>
                 <button class="copy-btn" id="copyBtn" style="display: none;" onclick="copyResult()">
-                    <span id="copy-text">Copy Result</span>
+                    📋 Copy Result
                 </button>
             </div>
         </div>
     </div>
 
     <script>
-        // Language translations
-        const translations = {
-            en: {
-                title: "The Best Cipher Machine",
-                description: "Seed-driven encryption inspired by historical machines like Enigma, featuring dynamic rotor shifts and hash-based randomization.",
-                howItWorks: "How it works:",
-                howItWorksDesc: "This cipher uses a 32-character rotor key (only 'a' to 'd') combined with a random seed to create dynamic encryption. Each character is shifted by an offset calculated from both the rotor position and a hash-based pseudo-random value derived from the seed.",
-                encrypt: "Encrypt",
-                decrypt: "Decrypt",
-                encryptLabel: "Enter plaintext to encrypt:",
-                decryptLabel: "Enter ciphertext to decrypt:",
-                rotorKeyLabel: "Rotor Key (32 characters, only 'a' to 'd'):",
-                seedLabel: "Random Seed (any string):",
-                generateKey: "Generate Random Key",
-                encryptBtn: "Encrypt Message",
-                decryptBtn: "Decrypt Message",
-                processing: "Processing...",
-                resultPlaceholder: "Your result will appear here",
-                encryptedResult: "Encrypted Result:",
-                decryptedResult: "Decrypted Result:",
-                copyResult: "Copy Result",
-                copied: "Copied!",
-                encryptPlaceholder: "Type your message here...",
-                decryptPlaceholder: "Paste encrypted text here...",
-                seedPlaceholder: "Enter your secret seed",
-                errorEmptyText: "Please enter some text to process.",
-                errorRotorLength: "Rotor key must be exactly 32 characters long.",
-                errorRotorChars: "Rotor key must contain only characters a, b, c, d.",
-                errorEmptySeed: "Please enter a random seed.",
-                errorProcessing: "An error occurred during processing."
-            },
-            ko: {
-                title: "최고의 암호 기계",
-                description: "에니그마와 같은 역사적 기계에서 영감을 받은 시드 기반 암호화, 동적 로터 이동과 해시 기반 무작위화를 특징으로 합니다.",
-                howItWorks: "작동 방식:",
-                howItWorksDesc: "이 암호는 32자 로터 키('a'에서 'd'만 사용)와 랜덤 시드를 결합하여 동적 암호화를 생성합니다. 각 문자는 로터 위치와 시드에서 파생된 해시 기반 의사 난수 값으로 계산된 오프셋만큼 이동됩니다.",
-                encrypt: "암호화",
-                decrypt: "복호화",
-                encryptLabel: "암호화할 평문을 입력하세요:",
-                decryptLabel: "복호화할 암호문을 입력하세요:",
-                rotorKeyLabel: "로터 키 (32자, 'a'부터 'd'까지만):",
-                seedLabel: "랜덤 시드 (임의의 문자열):",
-                generateKey: "랜덤 키 생성",
-                encryptBtn: "메시지 암호화",
-                decryptBtn: "메시지 복호화",
-                processing: "처리 중...",
-                resultPlaceholder: "결과가 여기에 표시됩니다",
-                encryptedResult: "암호화 결과:",
-                decryptedResult: "복호화 결과:",
-                copyResult: "결과 복사",
-                copied: "복사됨!",
-                encryptPlaceholder: "메시지를 입력하세요...",
-                decryptPlaceholder: "암호화된 텍스트를 붙여넣으세요...",
-                seedPlaceholder: "비밀 시드를 입력하세요",
-                errorEmptyText: "처리할 텍스트를 입력해주세요.",
-                errorRotorLength: "로터 키는 정확히 32자여야 합니다.",
-                errorRotorChars: "로터 키는 a, b, c, d 문자만 포함해야 합니다.",
-                errorEmptySeed: "랜덤 시드를 입력해주세요.",
-                errorProcessing: "처리 중 오류가 발생했습니다."
-            },
-            zh: {
-                title: "最佳密码机",
-                description: "受恩尼格玛等历史机器启发的种子驱动加密，具有动态转子移位和基于哈希的随机化功能。",
-                howItWorks: "工作原理：",
-                howItWorksDesc: "该密码使用32字符转子密钥（仅'a'到'd'）与随机种子相结合来创建动态加密。每个字符都会根据转子位置和从种子派生的基于哈希的伪随机值计算的偏移量进行移位。",
-                encrypt: "加密",
-                decrypt: "解密",
-                encryptLabel: "输入要加密的明文：",
-                decryptLabel: "输入要解密的密文：",
-                rotorKeyLabel: "转子密钥（32字符，仅'a'到'd'）：",
-                seedLabel: "随机种子（任意字符串）：",
-                generateKey: "生成随机密钥",
-                encryptBtn: "加密消息",
-                decryptBtn: "解密消息",
-                processing: "处理中...",
-                resultPlaceholder: "结果将显示在这里",
-                encryptedResult: "加密结果：",
-                decryptedResult: "解密结果：",
-                copyResult: "复制结果",
-                copied: "已复制！",
-                encryptPlaceholder: "在此输入您的消息...",
-                decryptPlaceholder: "在此粘贴加密文本...",
-                seedPlaceholder: "输入您的秘密种子",
-                errorEmptyText: "请输入一些要处理的文本。",
-                errorRotorLength: "转子密钥必须正好是32个字符长。",
-                errorRotorChars: "转子密钥必须只包含字符a、b、c、d。",
-                errorEmptySeed: "请输入随机种子。",
-                errorProcessing: "处理过程中发生错误。"
-            },
-            sv: {
-                title: "Den Bästa Chiffermaskin",
-                description: "Frö-driven kryptering inspirerad av historiska maskiner som Enigma, med dynamiska rotorförskjutningar och hash-baserad randomisering.",
-                howItWorks: "Så fungerar det:",
-                howItWorksDesc: "Denna chiffer använder en 32-tecken rotornyckel (endast 'a' till 'd') kombinerad med ett slumpmässigt frö för att skapa dynamisk kryptering. Varje tecken förskjuts med en offset beräknad från både rotorpositionen och ett hash-baserat pseudoslumpvärde härledd från fröet.",
-                encrypt: "Kryptera",
-                decrypt: "Dekryptera",
-                encryptLabel: "Ange klartext att kryptera:",
-                decryptLabel: "Ange chiffertext att dekryptera:",
-                rotorKeyLabel: "Rotornyckel (32 tecken, endast 'a' till 'd'):",
-                seedLabel: "Slumpmässigt frö (valfri sträng):",
-                generateKey: "Generera Slumpmässig Nyckel",
-                encryptBtn: "Kryptera Meddelande",
-                decryptBtn: "Dekryptera Meddelande",
-                processing: "Bearbetar...",
-                resultPlaceholder: "Ditt resultat kommer att visas här",
-                encryptedResult: "Krypterat Resultat:",
-                decryptedResult: "Dekrypterat Resultat:",
-                copyResult: "Kopiera Resultat",
-                copied: "Kopierat!",
-                encryptPlaceholder: "Skriv ditt meddelande här...",
-                decryptPlaceholder: "Klistra in krypterad text här...",
-                seedPlaceholder: "Ange ditt hemliga frö",
-                errorEmptyText: "Vänligen ange lite text att bearbeta.",
-                errorRotorLength: "Rotornyckeln måste vara exakt 32 tecken lång.",
-                errorRotorChars: "Rotornyckeln får endast innehålla tecknen a, b, c, d.",
-                errorEmptySeed: "Vänligen ange ett slumpmässigt frö.",
-                errorProcessing: "Ett fel uppstod under bearbetningen."
-            }
-        };
-
         // Cipher implementation
         const LETTERS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .,!?()';
         const ROTOR_CHARS = 'abcd';
         
         let currentMode = 'encrypt';
-        let currentLanguage = 'en';
 
         function rotorCharOffset(ch) {
             return ROTOR_CHARS.indexOf(ch);
@@ -551,7 +386,7 @@
 
         async function dynamicOffset(i, auxKey, seed) {
             const baseOffset = rotorCharOffset(auxKey[i % auxKey.length]);
-            const seedInput = `${seed}:${i}`;
+            const seedInput = ${seed}:${i};
             const hashDigest = await sha256(seedInput);
             const prngValue = parseInt(hashDigest.slice(0, 2), 16) % ROTOR_CHARS.length;
             return (baseOffset + prngValue) % LETTERS.length;
@@ -575,58 +410,6 @@
             return decrypted;
         }
 
-        function changeLanguage(lang) {
-            currentLanguage = lang;
-            
-            // Update active language button
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            // Update all text elements
-            const t = translations[lang];
-            document.getElementById('main-title').textContent = t.title;
-            document.getElementById('main-description').textContent = t.description;
-            document.getElementById('how-it-works').textContent = t.howItWorks;
-            document.getElementById('how-it-works-desc').textContent = t.howItWorksDesc;
-            document.getElementById('encrypt-text').textContent = t.encrypt;
-            document.getElementById('decrypt-text').textContent = t.decrypt;
-            document.getElementById('rotor-key-label').textContent = t.rotorKeyLabel;
-            document.getElementById('seed-label').textContent = t.seedLabel;
-            document.getElementById('generate-text').textContent = t.generateKey;
-            document.getElementById('copy-text').textContent = t.copyResult;
-            
-            // Update placeholders
-            document.getElementById('seed').placeholder = t.seedPlaceholder;
-            
-            // Update mode-specific text
-            updateModeText();
-            
-            // Update result placeholder if needed
-            const resultLabel = document.getElementById('resultLabel');
-            if (resultLabel.classList.contains('placeholder')) {
-                resultLabel.textContent = t.resultPlaceholder;
-            }
-        }
-
-        function updateModeText() {
-            const t = translations[currentLanguage];
-            const textLabel = document.getElementById('textLabel');
-            const processText = document.getElementById('process-text');
-            const textInput = document.getElementById('textInput');
-            
-            if (currentMode === 'encrypt') {
-                textLabel.textContent = t.encryptLabel;
-                processText.textContent = t.encryptBtn;
-                textInput.placeholder = t.encryptPlaceholder;
-            } else {
-                textLabel.textContent = t.decryptLabel;
-                processText.textContent = t.decryptBtn;
-                textInput.placeholder = t.decryptPlaceholder;
-            }
-        }
-
         function setMode(mode) {
             currentMode = mode;
             
@@ -634,10 +417,23 @@
             document.querySelectorAll('.mode-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            document.querySelector(`.mode-btn.${mode}`).classList.add('active');
+            document.querySelector(.mode-btn.${mode}).classList.add('active');
             
-            // Update text based on current language
-            updateModeText();
+            // Update labels and button text
+            const textLabel = document.getElementById('textLabel');
+            const processBtn = document.getElementById('processBtn');
+            
+            if (mode === 'encrypt') {
+                textLabel.textContent = 'Enter plaintext to encrypt:';
+                processBtn.textContent = '🔐 Encrypt Message';
+                processBtn.className = 'process-btn encrypt-btn';
+                document.getElementById('textInput').placeholder = 'Type your message here...';
+            } else {
+                textLabel.textContent = 'Enter ciphertext to decrypt:';
+                processBtn.textContent = '🔓 Decrypt Message';
+                processBtn.className = 'process-btn decrypt-btn';
+                document.getElementById('textInput').placeholder = 'Paste encrypted text here...';
+            }
             
             // Clear results
             clearResults();
@@ -648,27 +444,26 @@
             const rotorKey = document.getElementById('rotorKey').value;
             const seed = document.getElementById('seed').value;
             const errorDiv = document.getElementById('error');
-            const t = translations[currentLanguage];
             
             errorDiv.textContent = '';
             
             if (!text.trim()) {
-                errorDiv.textContent = t.errorEmptyText;
+                errorDiv.textContent = 'Please enter some text to process.';
                 return false;
             }
             
             if (rotorKey.length !== 32) {
-                errorDiv.textContent = t.errorRotorLength;
+                errorDiv.textContent = 'Rotor key must be exactly 32 characters long.';
                 return false;
             }
             
             if (!/^[abcd]+$/.test(rotorKey)) {
-                errorDiv.textContent = t.errorRotorChars;
+                errorDiv.textContent = 'Rotor key must contain only characters a, b, c, d.';
                 return false;
             }
             
             if (!seed.trim()) {
-                errorDiv.textContent = t.errorEmptySeed;
+                errorDiv.textContent = 'Please enter a random seed.';
                 return false;
             }
             
@@ -684,11 +479,10 @@
             const rotorKey = document.getElementById('rotorKey').value;
             const seed = document.getElementById('seed').value;
             const processBtn = document.getElementById('processBtn');
-            const t = translations[currentLanguage];
             
             // Show processing state
             processBtn.disabled = true;
-            document.getElementById('process-text').textContent = t.processing;
+            processBtn.textContent = '⚙️ Processing...';
             updateRotorVisualization(rotorKey);
             
             try {
@@ -701,12 +495,16 @@
                 
                 displayResult(result);
             } catch (error) {
-                document.getElementById('error').textContent = t.errorProcessing;
+                document.getElementById('error').textContent = 'An error occurred during processing.';
                 console.error(error);
             } finally {
                 // Reset button
                 processBtn.disabled = false;
-                updateModeText();
+                if (currentMode === 'encrypt') {
+                    processBtn.textContent = '🔐 Encrypt Message';
+                } else {
+                    processBtn.textContent = '🔓 Decrypt Message';
+                }
                 clearRotorVisualization();
             }
         }
@@ -715,9 +513,8 @@
             const resultLabel = document.getElementById('resultLabel');
             const resultText = document.getElementById('resultText');
             const copyBtn = document.getElementById('copyBtn');
-            const t = translations[currentLanguage];
             
-            resultLabel.textContent = currentMode === 'encrypt' ? t.encryptedResult : t.decryptedResult;
+            resultLabel.textContent = currentMode === 'encrypt' ? '🔐 Encrypted Result:' : '🔓 Decrypted Result:';
             resultLabel.classList.remove('placeholder');
             
             resultText.textContent = result;
@@ -729,9 +526,8 @@
             const resultLabel = document.getElementById('resultLabel');
             const resultText = document.getElementById('resultText');
             const copyBtn = document.getElementById('copyBtn');
-            const t = translations[currentLanguage];
             
-            resultLabel.textContent = t.resultPlaceholder;
+            resultLabel.textContent = 'Your result will appear here';
             resultLabel.classList.add('placeholder');
             resultText.style.display = 'none';
             copyBtn.style.display = 'none';
@@ -739,14 +535,12 @@
 
         function copyResult() {
             const resultText = document.getElementById('resultText').textContent;
-            const t = translations[currentLanguage];
-            
             navigator.clipboard.writeText(resultText).then(() => {
                 const copyBtn = document.getElementById('copyBtn');
                 const originalText = copyBtn.textContent;
-                document.getElementById('copy-text').textContent = t.copied;
+                copyBtn.textContent = '✅ Copied!';
                 setTimeout(() => {
-                    document.getElementById('copy-text').textContent = t.copyResult;
+                    copyBtn.textContent = originalText;
                 }, 2000);
             });
         }
@@ -769,6 +563,7 @@
             rotorViz.innerHTML = '';
         }
 
+        // Auto-generate rotor key button
         function generateRotorKey() {
             let key = '';
             for (let i = 0; i < 32; i++) {
@@ -777,6 +572,35 @@
             document.getElementById('rotorKey').value = key;
         }
 
+        // Add generate button
+        document.addEventListener('DOMContentLoaded', function() {
+            const rotorKeyGroup = document.querySelector('label[for="rotorKey"]').parentElement;
+            const generateBtn = document.createElement('button');
+            generateBtn.type = 'button';
+            generateBtn.textContent = '🎲 Generate Random Key';
+            generateBtn.style.cssText = `
+                margin-top: 10px;
+                padding: 8px 16px;
+                background: #764ba2;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                font-weight: 600;
+                transition: all 0.3s ease;
+            `;
+            generateBtn.onmouseover = () => generateBtn.style.background = '#6a4190';
+            generateBtn.onmouseout = () => generateBtn.style.background = '#764ba2';
+            generateBtn.onclick = generateRotorKey;
+            rotorKeyGroup.appendChild(generateBtn);
+        });
+
         // Enter key support
         document.addEventListener('keydown', function(event) {
-            if (event.key === 'Enter'
+            if (event.key === 'Enter' && (event.ctrlKey || event.metaKey)) {
+                processText();
+            }
+        });
+    </script>
+</body>
+</html>
